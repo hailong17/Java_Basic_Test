@@ -22,22 +22,17 @@ public class DemoExcel
         XSSFWorkbook workbook = new XSSFWorkbook();
 
         // Creating a blank Excel sheet
-        XSSFSheet sheet
-            = workbook.createSheet("student Details");
+        XSSFSheet sheet = workbook.createSheet("student Details");
 
         // Creating an empty TreeMap of string and Object][]
         // type
-        Map<String, Object[]> data
-            = new TreeMap<String, Object[]>();
+        Map<String, Object[]> data = new TreeMap<String, Object[]>();
 
         // Writing data to Object[]
         // using put() method
-        data.put("1",
-                 new Object[] { "ID", "NAME", "LASTNAME" });
-        data.put("2",
-                 new Object[] { 1, "Pankaj", "Kumar" });
-        data.put("3",
-                 new Object[] { 2, "Prakashni", "Yadav" });
+        data.put("1", new Object[] { "ID", "NAME", "LASTNAME" });
+        data.put("2", new Object[] { 1, "Pankaj", "Kumar" });
+        data.put("3", new Object[] { 2, "Prakashni", "Yadav" });
         data.put("4", new Object[] { 3, "Ayan", "Mondal" });
         data.put("5", new Object[] { 4, "Virat", "kohli" });
 
@@ -63,34 +58,19 @@ public class DemoExcel
 
                 if (obj instanceof String)
                     cell.setCellValue((String)obj);
-
                 else if (obj instanceof Integer)
                     cell.setCellValue((Integer)obj);
             }
         }
 
-        // Try block to check for exceptions
         try {
-
-            // Writing the workbook
-            FileOutputStream out = new FileOutputStream(
-                new File("DemoExcel.xlsx"));
+            FileOutputStream out = new FileOutputStream(new File("DemoExcel.xlsx"));
             workbook.write(out);
-
-            // Closing file output connections
             out.close();
-
-            // Console message for successful execution of
-            // program
-            System.out.println(
-                "DemoExcel.xlsx written successfully on disk.");
+            System.out.println("DemoExcel.xlsx written successfully on disk.");
         }
 
-        // Catch block to handle exceptions
         catch (Exception e) {
-
-            // Display exceptions along with line number
-            // using printStackTrace() method
             e.printStackTrace();
         }
     }
