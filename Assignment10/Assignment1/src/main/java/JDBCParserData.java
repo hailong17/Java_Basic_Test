@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class JDBCParserData {
     public static void main(String[] args) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/assignment10"; 
+        String jdbcUrl  = "jdbc:mysql://localhost:3306/assignment10"; 
         String username = "root"; 
         String password = ""; 
 
