@@ -8,7 +8,9 @@ public class ParserJson {
     public static void main(String[] args) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode rootNode = objectMapper.readTree(new File("jobs.json"));
+            String userDirectory = System.getProperty("user.dir");
+            String jsonFile   = userDirectory.replace("\\", "/") + "/ParserJson/jobs.json";
+            JsonNode rootNode = objectMapper.readTree(new File(jsonFile));
             JsonNode jobsNode = rootNode.get("jobs");
 
             for (JsonNode jobNode : jobsNode) {

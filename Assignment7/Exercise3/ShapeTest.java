@@ -146,22 +146,22 @@ class Square extends Rectangle {
     }
 
     public double getSide() {
-        return getWidth(); // Since Square is a special case of Rectangle, we use the width as the side.
+        return getWidth();
     }
 
     public void setSide(double side) {
-        setWidth(side); // Since Square is a special case of Rectangle, we set the width as the side.
+        setWidth(side);
         setLength(side);
     }
 
     @Override
     public void setWidth(double side) {
-        setSide(side); // Overriding setWidth to ensure width and length are always the same for a Square.
+        setSide(side);
     }
 
     @Override
     public void setLength(double side) {
-        setSide(side); // Overriding setLength to ensure width and length are always the same for a Square.
+        setSide(side);
     }
 
     @Override
@@ -176,16 +176,9 @@ public class ShapeTest {
         Shape shape2 = new Rectangle(4.0, 6.0, "green", false);
         Shape shape3 = new Square(3.0, "yellow", true);
 
-        System.out.println(shape1.toString());
-        System.out.println("Area: " + shape1.getArea());
-        System.out.println("Perimeter: " + shape1.getPerimeter());
+        System.out.println(shape1.toString() + "\n" + "Area: " + shape1.getArea() + "\n" + "Perimeter: " + shape1.getPerimeter());
+        System.out.println(shape2.toString() + "\n" + "Area: " + shape2.getArea() + "\n" + "Perimeter: " + shape2.getPerimeter());
+        System.out.println(shape3.toString() + "\n" + "Area: " + shape3.getArea() + "\n" + "Perimeter: " + shape3.getPerimeter());
 
-        System.out.println(shape2.toString());
-        System.out.println("Area: " + shape2.getArea());
-        System.out.println("Perimeter: " + shape2.getPerimeter());
-
-        System.out.println(shape3.toString());
-        System.out.println("Area: " + shape3.getArea());
-        System.out.println("Perimeter: " + shape3.getPerimeter());
     }
 }

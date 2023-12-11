@@ -18,32 +18,24 @@ public class DemoExcel
     public static void main(String[] args)
     {
 
-        // Blank workbook
         XSSFWorkbook workbook = new XSSFWorkbook();
 
-        // Creating a blank Excel sheet
         XSSFSheet sheet = workbook.createSheet("student Details");
 
-        // Creating an empty TreeMap of string and Object][]
-        // type
         Map<String, Object[]> data = new TreeMap<String, Object[]>();
 
-        // Writing data to Object[]
-        // using put() method
         data.put("1", new Object[] { "ID", "NAME", "LASTNAME" });
         data.put("2", new Object[] { 1, "Pankaj", "Kumar" });
         data.put("3", new Object[] { 2, "Prakashni", "Yadav" });
         data.put("4", new Object[] { 3, "Ayan", "Mondal" });
         data.put("5", new Object[] { 4, "Virat", "kohli" });
 
-        // Iterating over data and writing it to sheet
         Set<String> keyset = data.keySet();
 
         int rownum = 0;
 
         for (String key : keyset) {
 
-            // Creating a new row in the sheet
             Row row = sheet.createRow(rownum++);
 
             Object[] objArr = data.get(key);
@@ -51,9 +43,6 @@ public class DemoExcel
             int cellnum = 0;
 
             for (Object obj : objArr) {
-
-                // This line creates a cell in the next
-                //  column of that row
                 Cell cell = row.createCell(cellnum++);
 
                 if (obj instanceof String)
@@ -64,10 +53,12 @@ public class DemoExcel
         }
 
         try {
-            FileOutputStream out = new FileOutputStream(new File("DemoExcel.xlsx"));
+            String userDirectory = System.getProperty("user.dir");
+            String excelFile   = userDirectory.replace("\\", "/") + "/DemoExcel.xlsx";
+            FileOutputStream out = new FileOutputStream(new File(excelFile));
             workbook.write(out);
             out.close();
-            System.out.println("DemoExcel.xlsx written successfully on disk.");
+            System.out.println("DemoExcel.xlsx written successfully");
         }
 
         catch (Exception e) {

@@ -1,9 +1,9 @@
 package Exercise2;
 
-class CustomException extends Exception {
+class MyException extends Exception {
     private String message;
 
-    public CustomException(String message) {
+    public MyException(String message) {
         this.message = message;
     }
 
@@ -15,8 +15,8 @@ class CustomException extends Exception {
 public class Main {
     public static void main(String[] args) {
         try {
-            throw new CustomException("My exception occurred!");
-        } catch (CustomException e) {
+            throw new MyException("My exception occurred!");
+        } catch (MyException e) {
             e.printMessage();
         }
     }

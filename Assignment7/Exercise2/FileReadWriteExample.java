@@ -30,28 +30,28 @@ public class FileReadWriteExample {
 		String filename      = userDirectory.replace("\\", "/") + "/Exercise2/student.txt";
 
         // Create a Student object
-        Student student = new Student("John", "Doe", "john.doe@example.com");
+        Student student = new Student("Long", "Hai", "hailong97bn@example.com");
 
-        // Write the Student object to a file
+        // Write the data to a file
         try {
             FileOutputStream fileOutputStream     = new FileOutputStream(filename);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(student);
             objectOutputStream.close();
             fileOutputStream.close();
-            System.out.println("Student object written to file successfully.");
+            System.out.println("Data written to file successfully.");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // Read the Student object from the file
+        // Read the data from the file
         try {
             FileInputStream fileInputStream     = new FileInputStream(filename);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             Student readStudent = (Student) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
-            System.out.println("Student object read from file: " + readStudent.getFirstName() + " " +
+            System.out.println("Data read from file: " + readStudent.getFirstName() + " " +
                     readStudent.getLastName() + " (" + readStudent.getEmail() + ")");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
