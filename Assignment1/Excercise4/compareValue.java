@@ -1,0 +1,29 @@
+package Excercise4;
+
+import java.util.Scanner;
+
+public class compareValue {
+	public static void main(String[] args) {
+		try (Scanner myObj = new Scanner(System.in)) {
+			System.out.println("Enter number one:");
+			/* Get user input */
+			int num1   = myObj.nextInt();
+
+			System.out.println("Enter number two:");
+			/* Get user input */
+			int num2   = myObj.nextInt();
+
+			myObj.close();
+
+			if(num1 == num2) {
+				return;
+			}
+			else if (num1 % 6 == num2 % 6){
+				System.out.println("Result: " + Math.min(num1, num2));
+			}
+			else {
+				System.out.println("Result: " + Math.max(num1, num2));
+			}
+		}
+	}
+}

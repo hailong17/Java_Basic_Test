@@ -1,0 +1,3 @@
+hello my name is Long
+this is exercise 1
+read data from input.txt and write to output.txt completely
