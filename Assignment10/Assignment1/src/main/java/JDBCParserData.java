@@ -1,8 +1,6 @@
-package Exercise1;
-
 import java.sql.*;
 
-public class DatabaseInfoPrinter {
+public class JDBCParserData {
     public static void main(String[] args) {
         String jdbcUrl = "jdbc:mysql://localhost:3306/assignment10"; 
         String username = "root"; 
@@ -29,6 +27,7 @@ public class DatabaseInfoPrinter {
                     System.out.println("Column: " + columnName + " - Type: " + columnType);
                 }
                 columnResultSet.close();
+                System.out.println("\n");
             }
             tableResultSet.close();
 
