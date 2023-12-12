@@ -13,13 +13,13 @@ public class FileReadWriteExample {
         try {
             /* Read the file */
             FileInputStream fileInputStream = new FileInputStream(inputFile);
-            byte[] buffer                   = new byte[fileInputStream.available()];
-            fileInputStream.read(buffer);
+            byte[] data                     = new byte[fileInputStream.available()];
+            fileInputStream.read(data);
             fileInputStream.close();
 
             /* Write to the file */
             FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
-            fileOutputStream.write(buffer);
+            fileOutputStream.write(data);
             fileOutputStream.close();
 
             System.out.println("File read and write operations completed successfully.");

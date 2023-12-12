@@ -13,7 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * Hello world!
  *
  */
-public class DemoExcel 
+public class DemoExcel
 {
     public static void main(String[] args)
     {
@@ -53,11 +53,11 @@ public class DemoExcel
         }
 
         try {
-            String userDirectory = System.getProperty("user.dir");
-            String excelFile   = userDirectory.replace("\\", "/") + "/DemoExcel.xlsx";
-            FileOutputStream out = new FileOutputStream(new File(excelFile));
-            workbook.write(out);
-            out.close();
+            String userDirectory    = System.getProperty("user.dir");
+            String excelFile        = userDirectory.replace("\\", "/") + "/DemoExcel.xlsx";
+            FileOutputStream outPut = new FileOutputStream(new File(excelFile));
+            workbook.write(outPut);
+            outPut.close();
             System.out.println("DemoExcel.xlsx written successfully");
         }
 

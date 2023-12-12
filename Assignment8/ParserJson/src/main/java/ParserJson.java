@@ -8,18 +8,18 @@ public class ParserJson {
     public static void main(String[] args) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            String userDirectory = System.getProperty("user.dir");
-            String jsonFile   = userDirectory.replace("\\", "/") + "/ParserJson/jobs.json";
-            JsonNode rootNode = objectMapper.readTree(new File(jsonFile));
-            JsonNode jobsNode = rootNode.get("jobs");
+            String userDirectory      = System.getProperty("user.dir");
+            String jsonFile           = userDirectory.replace("\\", "/") + "/Assignment8/ParserJson/jobs.json";
+            JsonNode rootNode         = objectMapper.readTree(new File(jsonFile));
+            JsonNode jobsNode         = rootNode.get("jobs");
 
             for (JsonNode jobNode : jobsNode) {
-            	String nodeName = jobNode.fieldNames().next();
-                String employer = extractNode(jobNode, "employer");
-                String title = extractNode(jobNode, "title");
+            	String nodeName    = jobNode.fieldNames().next();
+                String employer    = extractNode(jobNode, "employer");
+                String title       = extractNode(jobNode, "title");
                 String description = extractNode(jobNode, "description");
-                String start = extractNode(jobNode.get("duration"), "start");
-                String end = extractNode(jobNode.get("duration"), "end");
+                String start       = extractNode(jobNode.get("duration"), "start");
+                String end         = extractNode(jobNode.get("duration"), "end");
 
                 System.out.println("Node Name: " + nodeName);
                 System.out.println("employer: " + employer);

@@ -44,9 +44,9 @@ class C extends B {
 public class Main {
     public static void main(String[] args) {
 		/* Upcasting C to A */
-        A myObject = new C();
+        A printMessage = new C();
         try {
-            myObject.throwException();
+            printMessage.throwException();
         } catch (LevelOneException e) {
             System.out.println(e.getMessage());
         }
