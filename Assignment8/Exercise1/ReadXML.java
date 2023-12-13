@@ -45,7 +45,7 @@ public class ReadXML {
 
 	public static void main(String[] args) {
 		String userDirectory = System.getProperty("user.dir");
-		String xmlFilePath   = userDirectory.replace("\\", "/") + "/Exercise1/student.xml";
+		String xmlFilePath   = userDirectory.replace("\\", "/") + "/Assignment8/Exercise1/student.xml";
 		parseXML(xmlFilePath);
 	}
 }

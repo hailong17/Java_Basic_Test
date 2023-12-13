@@ -1,23 +1,24 @@
 package Exercise2;
 
 class MyException extends Exception {
-    private String message;
-
-    public MyException(String message) {
-        this.message = message;
-    }
-
-    public void printMessage() {
-        System.out.println(message);
+    public MyException() {
     }
 }
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         try {
-            throw new MyException("My exception occurred!");
+            Divide();
         } catch (MyException e) {
-            e.printMessage();
+            System.out.println("My exception occurred!");
+        }
+    }
+
+    public static void Divide() throws MyException {
+        try {
+            int a = 5/0;
+        } catch (Exception e) {
+            throw new MyException();
         }
     }
 }
