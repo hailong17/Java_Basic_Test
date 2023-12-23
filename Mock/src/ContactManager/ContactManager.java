@@ -1,30 +1,18 @@
-package Problem01;
+package ContactManager;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Contact {
-    private String name;
-    private String phoneNumber;
+import Contact.Contact;
 
-    public Contact(String name, String phoneNumber) {
-        this.name = name;
-        this.phoneNumber = phoneNumber;
+public class ContactManager {
+    private ArrayList<Contact> contacts;
+
+    public ContactManager() {
+        contacts = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-}
-
-public class mock {
-    private static ArrayList<Contact> contacts = new ArrayList<>();
-
-    public static void main(String[] args) {
+    public void start() {
         Scanner scanner = new Scanner(System.in);
         int option;
 
@@ -58,7 +46,7 @@ public class mock {
         } while (option != 4);
     }
 
-    private static void addContact(Scanner scanner) {
+    private void addContact(Scanner scanner) {
         String name, phoneNumber;
 
         do {
@@ -73,7 +61,7 @@ public class mock {
         } while (scanner.next().equalsIgnoreCase("y"));
     }
 
-    private static void findContactByName(Scanner scanner) {
+    private void findContactByName(Scanner scanner) {
         System.out.print("Enter the contact name: ");
         String name = scanner.next();
         boolean found = false;
@@ -91,12 +79,17 @@ public class mock {
         }
     }
 
-    private static void displayContacts() {
+    private void displayContacts() {
         System.out.println("Address Book");
         System.out.println("Contact Name\t\tPhone Number");
 
         for (Contact contact : contacts) {
             System.out.println(contact.getName() + "\t\t" + contact.getPhoneNumber());
         }
+    }
+
+    public static void main(String[] args) {
+        ContactManager contactManager = new ContactManager();
+        contactManager.start();
     }
 }

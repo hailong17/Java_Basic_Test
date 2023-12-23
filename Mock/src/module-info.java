@@ -4,5 +4,5 @@
 /**
  * 
  */
-module Mock_problem_01 {
+module Mock_01 {
 }
