@@ -16,6 +16,12 @@ public class LibraryManagementSystem {
     }
 
     private static void displayMainMenu() {
+    	try {
+			bookDao.createBookTable();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         while (true) {
             System.out.println("== Library Management System ==");
             System.out.println("1. Add Book");
@@ -58,14 +64,36 @@ public class LibraryManagementSystem {
         System.out.println("---------- Add Book ----------");
         System.out.print("Enter book name: ");
         String bookName = scanner.nextLine();
+        
         System.out.print("Enter price: ");
         double price = scanner.nextDouble();
+        scanner.nextLine(); // Consume newline character
+        
+        System.out.print("Enter genre: ");
+        String genre = scanner.nextLine();
+        
+        System.out.print("Enter author: ");
+        String author = scanner.nextLine();
+        
+        System.out.print("Enter quantity: ");
+        int quantity = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+        
+        System.out.print("Enter status: ");
+        String status = scanner.nextLine();
+        
+        System.out.print("Enter new total pages: ");
+        int totalPages = scanner.nextInt();
         scanner.nextLine(); // Consume newline character
 
         Book book = new Book();
         book.setBookName(bookName);
         book.setPrice(price);
-
+        book.setGenre(genre);
+        book.setAuthor(author);
+        book.setQty(quantity);
+        book.setStatus(status);
+        book.setTotalPage(totalPages);
         try {
             bookDao.save(book);
             System.out.println("Book added successfully.");
@@ -158,17 +186,17 @@ public class LibraryManagementSystem {
 
     private static void displayAllBooks() {
         System.out.println("---------- All Books ----------");
-//        try {
-//            List<Book> books = bookDao.getAllBooks();
-//
-//            if (books.isEmpty()) {
-//                System.out.println("No books found.");
-//            } else {
-//                displayBooks(books);
-//            }
-//        } catch (SQLException e) {
-//            System.out.println("Error: " + e.getMessage());
-//        }
+        try {
+            List<Book> books = bookDao.displayAll();
+
+            if (books.isEmpty()) {
+                System.out.println("No books found.");
+            } else {
+                displayBooks(books);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     private static void displayBooks(List<Book> books) {

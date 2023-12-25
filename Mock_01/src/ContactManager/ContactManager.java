@@ -12,7 +12,7 @@ public class ContactManager {
         contacts = new ArrayList<>();
     }
 
-    public void start() {
+    public void implementation() {
         Scanner scanner = new Scanner(System.in);
         int option;
 
@@ -36,7 +36,7 @@ public class ContactManager {
                     displayContacts();
                     break;
                 case 4:
-                    System.out.println("Exiting the program. Goodbye!");
+                    System.out.println("Exiting the program!");
                     break;
                 default:
                     System.out.println("Invalid option. Please try again.");
@@ -90,6 +90,6 @@ public class ContactManager {
 
     public static void main(String[] args) {
         ContactManager contactManager = new ContactManager();
-        contactManager.start();
+        contactManager.implementation();
     }
 }

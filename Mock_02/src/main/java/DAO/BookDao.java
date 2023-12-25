@@ -7,9 +7,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookDao {
-    private final String url = "jdbc:mysql://localhost:3306/assignment10";
+    private final String url = "jdbc:mysql://localhost:3306/mock";
     private final String username = "root";
     private final String password = "";
+
+    public void createBookTable() throws SQLException {
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            String query = "CREATE TABLE IF NOT EXISTS Book (" +
+                    "bID INT(10) AUTO_INCREMENT PRIMARY KEY," +
+                    "bookName VARCHAR(50) NOT NULL," +
+                    "price DOUBLE NOT NULL," +
+                    "genre VARCHAR(10)," +
+                    "author VARCHAR(13)," +
+                    "qty INT(4)," +
+                    "status VARCHAR(10)," +
+                    "total_page INT(4)" +
+                    ")";
+
+            try (PreparedStatement statement = connection.prepareStatement(query)) {
+                statement.executeUpdate();
+            }
+        }
+    }
 
     public void save(Book book) throws SQLException {
         try (Connection connection = DriverManager.getConnection(url, username, password)) {

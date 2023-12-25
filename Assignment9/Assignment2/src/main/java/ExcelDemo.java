@@ -1,6 +1,7 @@
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -9,42 +10,36 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelDemo {
     public static void main(String[] args) {
+        Random random = new Random();
         // Step 1: Create a workbook
         Workbook workbook = new XSSFWorkbook();
 
         /* Step 2: Create a sheet in the workbook */
         Sheet sheet = workbook.createSheet("Sheet1");
 
-        // Creating an empty TreeMap of string and Object[] type
-        Map<String, Object[]> data = new TreeMap<String, Object[]>();
+        Row header        = sheet.createRow(0);
+        Cell firstColumn  = header.createCell(0);
+        firstColumn.setCellValue("Students");
 
-        /* Writing data to Object[] using put() method */
-        data.put("1", new Object[] {"Students", "Paper1", "Paper2", "Paper3", "Paper4", "Paper5", "Paper6", "Paper7", "Total"});
-        data.put("2", new Object[] {"Student 1", 1, 7, 74, 23, 75, 55, 51, 286});
-        data.put("3", new Object[] {"Student 2", 73, 17, 5, 52, 18, 26, 26, 217});
-        data.put("4", new Object[] {"Student 3", 27, 29, 29, 35, 96, 17, 45, 278});
-        data.put("5", new Object[] {"Student 4", 4, 4, 56, 32, 12, 22, 14, 144});
+        for (int i = 0; i <= 6; i++) {
+            Cell nextHeader = header.createCell(i+1);
+            nextHeader.setCellValue("Paper " + (i+1));
+        }
 
-        // Iterating over data and writing it to sheet
-        Set<String> keyset = data.keySet();
-        int rownum = 0;
+        Cell lastColumn = header.createCell(8);
+        lastColumn.setCellValue("Total");
 
-        for (String key : keyset) {
-            // Creating a new row in the sheet
-            Row row = sheet.createRow(rownum++);
-            Object[] objArr = data.get(key);
-            int cellnum = 0;
-
-            for (Object obj : objArr) {
-                // This line creates a cell in the next column of that row
-                Cell cell = row.createCell(cellnum++);
-
-                if (obj instanceof String) {
-                    cell.setCellValue((String) obj);
-                } else if (obj instanceof Integer) {
-                    cell.setCellValue((Integer) obj);
-                }
+        for (int row = 1; row <= 7; row++) {
+            Row firstrow = sheet.createRow(row);
+            Cell cell    = firstrow.createCell(0);
+            cell.setCellValue("Student " + row);
+            for (int column = 1; column <= 7; column++) {
+                Cell numOfCell = firstrow.createCell(column);
+                numOfCell.setCellValue(random.nextInt(100));
             }
+
+            Cell sum = firstrow.createCell(8);
+            sum.setCellFormula("SUM(B" + (row + 1) + ":H" + (row + 1) + ")");
         }
 
         // Set the color for specific cells using a loop
@@ -59,14 +54,14 @@ public class ExcelDemo {
                     style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                     cell.setCellStyle(style);
                 }
-            } if (rowIndex == 1 || rowIndex == 2 || rowIndex == 3 || rowIndex == 4) {
+            } if (rowIndex == 1 || rowIndex == 2 || rowIndex == 3 || rowIndex == 4 || rowIndex == 5 || rowIndex == 6 || rowIndex == 7) {
                 Cell cell = row.getCell(0);
                 CellStyle style = workbook.createCellStyle();
                 style.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
                 style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 cell.setCellStyle(style);
             }
-            if (rowIndex == 1 || rowIndex == 2 || rowIndex == 3 || rowIndex == 4) {
+            if (rowIndex == 1 || rowIndex == 2 || rowIndex == 3 || rowIndex == 4 || rowIndex == 5 || rowIndex == 6 || rowIndex == 7) {
                 Cell orangeCell = row.getCell(8);
 
                 CellStyle style1 = workbook.createCellStyle();
