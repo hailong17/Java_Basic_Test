@@ -19,7 +19,6 @@ public class LibraryManagementSystem {
     	try {
 			bookDao.createBookTable();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         while (true) {
@@ -30,10 +29,10 @@ public class LibraryManagementSystem {
             System.out.println("4. Find Book by name or author");
             System.out.println("5. Display all Books");
             System.out.println("6. Exit");
-            System.out.print("Your choice: ");
+            System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline character
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -52,7 +51,7 @@ public class LibraryManagementSystem {
                     displayAllBooks();
                     break;
                 case 6:
-                    System.out.println("Exiting...");
+                    System.out.println("Exit program!");
                     System.exit(0);
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -64,27 +63,27 @@ public class LibraryManagementSystem {
         System.out.println("---------- Add Book ----------");
         System.out.print("Enter book name: ");
         String bookName = scanner.nextLine();
-        
+
         System.out.print("Enter price: ");
         double price = scanner.nextDouble();
-        scanner.nextLine(); // Consume newline character
-        
+        scanner.nextLine();
+
         System.out.print("Enter genre: ");
         String genre = scanner.nextLine();
-        
+
         System.out.print("Enter author: ");
         String author = scanner.nextLine();
-        
+
         System.out.print("Enter quantity: ");
         int quantity = scanner.nextInt();
-        scanner.nextLine(); // Consume newline character
-        
+        scanner.nextLine();
+
         System.out.print("Enter status: ");
         String status = scanner.nextLine();
-        
+
         System.out.print("Enter new total pages: ");
         int totalPages = scanner.nextInt();
-        scanner.nextLine(); // Consume newline character
+        scanner.nextLine();
 
         Book book = new Book();
         book.setBookName(bookName);
@@ -119,19 +118,19 @@ public class LibraryManagementSystem {
                 System.out.println("Updating book with ID: " + book.getbID());
                 System.out.print("Enter new price: ");
                 double price = scanner.nextDouble();
-                scanner.nextLine(); // Consume newline character
+                scanner.nextLine();
                 System.out.print("Enter new genre: ");
                 String genre = scanner.nextLine();
                 System.out.print("Enter new author: ");
                 String author = scanner.nextLine();
                 System.out.print("Enter new quantity: ");
                 int quantity = scanner.nextInt();
-                scanner.nextLine(); // Consume newline character
+                scanner.nextLine();
                 System.out.print("Enter new status: ");
                 String status = scanner.nextLine();
                 System.out.print("Enter new total pages: ");
                 int totalPages = scanner.nextInt();
-                scanner.nextLine(); // Consume newline character
+                scanner.nextLine();
 
                 book.setPrice(price);
                 book.setGenre(genre);
